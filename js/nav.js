@@ -1,10 +1,18 @@
 document.addEventListener("DOMContentLoaded", function () {
   var toggle = document.querySelector(".nav-toggle");
-  var links = document.querySelector(".nav-links");
+  var menu = document.querySelector(".nav-menu");
 
-  if (!toggle || !links) return;
+  if (!toggle || !menu) return;
 
   toggle.addEventListener("click", function () {
-    links.classList.toggle("open");
+    toggle.classList.toggle("open");
+    menu.classList.toggle("open");
+  });
+
+  menu.querySelectorAll("a").forEach(function (link) {
+    link.addEventListener("click", function () {
+      toggle.classList.remove("open");
+      menu.classList.remove("open");
+    });
   });
 });
